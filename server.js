@@ -5,9 +5,11 @@ const express = require("express");
 // require mongoose
 const mongoose = require("mongoose");
 // require the userRoutes
-const userRoutes = require("./routes/user-routes");
+const userRoutes = require("./routes/api/user-routes");
 // require the thoughtRoutes
-const thoughtRoutes = require("./routes/thought-routes");
+const thoughtRoutes = require("./routes/api/thought-routes");
+// require the connection file
+const connection = require("./config/connection");
 
 // create an express app
 const app = express();
@@ -17,7 +19,7 @@ const PORT = process.env.PORT || 3001;
 // middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 
-// connect to mongoose
+// use routes
+app.use('/routes/user-routes')
 
-// require the mongoose configuration file which does the rest for us
-// use bodyParser to parse form data sent via HTTP POST
+
