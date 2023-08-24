@@ -1,7 +1,5 @@
 // import schema and model
 const { Schema, model } = require('mongoose');
-// import thoughts model
-const Thought = require('./Thought');
 // set up user schema
 const UserSchema = new Schema(
     // define fields
