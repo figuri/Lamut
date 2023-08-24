@@ -1,5 +1,6 @@
-// import shcema and model from mongoose
-const { Schema, model } = require('mongoose');
+// import mongoose and schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 // import User model
 const User = require('./User');
 // set up thought schema
@@ -65,7 +66,7 @@ ThoughtSchema.virtual('reactionCount').get(function() {
 });
 
 // create the Thought model using the ThoughtSchema
-const Thought = model('Thought', ThoughtSchema);
+const Thought = mongoose.model('Thought', ThoughtSchema);
 
 // export the Thought model
 module.exports = Thought;

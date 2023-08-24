@@ -141,8 +141,26 @@ const thoughtController = {
         )
             // if error, send 400 status
             .catch(err => res.status(400).json(err));
+    },
+
+    // remove reaction
+    deleteReaction({ params }, res) {
+        // find thought by id and update
+        Thought.findOneAndUpdate(
+            { _id: params.thoughtId },
+            // remove reaction from reactions array
+            { $pull: { reactions: { reactionId: params.reactionId } } },
+            // return updated thought
+            { new: true }
+        )
+            // send response
+            .then(dbThoughtData => res.json(dbThoughtData))
+            // if error, send 400 status
+            .catch(err => res.status(400).json(err));
     }
 };
+
+
 
 // export thought controller
 module.exports = thoughtController;

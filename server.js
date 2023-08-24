@@ -1,6 +1,9 @@
 // require express
 const express = require('express');
 
+// import mongoose connection
+const mongoose = require('./config/connection');
+
 // create express app
 const app = express();
 const PORT = process.env.PORT || 3001;

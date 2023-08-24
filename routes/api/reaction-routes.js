@@ -14,10 +14,10 @@ router.route('/reactions').get(reactionController.getAllReactions);
 router.route('/reactions/:id').get(reactionController.getReactionById);
 
 // route to create a new reaction
-router.route('/reactions').post(reactionController.createReaction);
+router.route('/reactions').post(reactionController.addReaction);
 
 // route to delete a reaction by id
-router.route('/reactions/:id').delete(reactionController.deleteReaction);
+router.route('/reactions/:id').delete(reactionController.removeReaction);
 
 // export router
 module.exports = router;
