@@ -76,7 +76,7 @@ const userController = {
     },
     // update user by id
     updateUser({ params, body }, res) {
-        User.update({ _id: params.id }, body, { new: true, runValidators: true })
+        User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
             // send response
             .then(dbUserData => {
                 // if no user found, send 404 status
