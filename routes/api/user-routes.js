@@ -28,7 +28,7 @@ router.route('/user/:id').delete(userController.deleteUser);
 
 // route to add a friend to a user's friend list
 router.route('/user/:userId/friends/:friendId').post(userController.addFriend);
-// http://localhost:3001/api/user/60f1b5b7f0f0a1b4b8f1b1a1/friends/:id
+// http://localhost:3001/api/user/:id/friends/:id
 
 // route to delete a friend from a user's friend list
 router.route('/user/:userId/friends/:friendId').delete(userController.deleteFriend);
