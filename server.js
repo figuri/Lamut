@@ -2,7 +2,7 @@
 const express = require('express');
 
 // import mongoose connection
-const mongoose = require('./config/connection');
+const socialDB = require('./config/connection');
 
 // create express app
 const app = express();

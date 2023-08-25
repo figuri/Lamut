@@ -22,18 +22,19 @@ const UserSchema = new Schema(
         }, // thoughts (array of _id values referencing the Thought model)
         thoughts: [
             {
-                type: Schema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'Thought'
             }
         ],// friends (array of _id values referencing the User model)
         friends: [
             {
-                type: Schema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'User'
             }
         ]
     }
 );
+
     // use virtual to get friendCount
 UserSchema.virtual('friendCount').get(function() {
     return this.friends.length;
