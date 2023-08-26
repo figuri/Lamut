@@ -84,21 +84,18 @@ const thoughtController = {
             // if error, send 400 status
             .catch(err => res.status(400).json(err));
     },
-    // update thought by id
     updateThought({ params, body }, res) {
-        Thought.findOneAndUpdate(body, { new: true, runValidators: true })
-            // send response
+        // Use the ID from params to find the thought
+        Thought.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
             .then(dbThoughtData => {
-                // if no thought found, send 404 status
+                // If no thought found, send 404 status
                 if (!dbThoughtData) {
-                    res.status(404).json({ message: 'No thought found with this id!' });
-                    return;
+                    return res.status(404).json({ message: 'No thought found with this id!' });
                 }
-                // else, send thought data
+                // Else, send thought data
                 res.json(dbThoughtData);
-            }
-        )
-            // if error, send 400 status
+            })
+            // If error, send 400 status
             .catch(err => res.status(400).json(err));
     },
     // delete thought by id
@@ -122,7 +119,7 @@ const thoughtController = {
     addReaction({ params, body }, res) {
         // create reaction
         Thought.findOneAndUpdate(
-            { _id: params.thoughtId },
+            { _id: params.id },
             // add reaction to reactions array
             { $push: { reactions: body } },
             // return updated thought
@@ -133,6 +130,7 @@ const thoughtController = {
                 // if no thought found, send 404 status
                 if (!dbThoughtData) {
                     res.status(404).json({ message: 'No thought found with this id!' });
+                    console.log(res);
                     return;
                 }
                 // else, send thought data
